@@ -2,7 +2,10 @@
 # $config = Get-Content 'config.json' -Raw | ConvertFrom-Json
 $config = Import-Csv 'config.csv'
 
-# ZIP 処理に必要な型
+# ZipArchive 型を定義しているアセンブリを読み込む
+Add-Type -AssemblyName System.IO.Compression
+
+# ZipFile / CreateEntryFromFile 拡張メソッドを読み込む
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 foreach ($item in $config) {
